@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -115,4 +116,19 @@ public class MedicoController {
                         medico.getDireccion().getComplemento()));
         return ResponseEntity.ok(datosMedico);
     }
+
+    //                  METODO CON EL ROL ADMIN @Secured para el rol
+    /*
+    @GetMapping("/{id}")
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity detallar(@PathVariable Long id) {
+        var medico = medicoRepository.getReferenceById(id);
+        var datosMedico = new DatosRespuestaMedico(medico.getId(), medico.getNombre(),
+                medico.getEmail(), medico.getTelefono(), medico.getEspecialidad().toString(),
+                new DatosDireccion(medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento()));
+        return ResponseEntity.ok(datosMedico);
+    }
+    */
 }
